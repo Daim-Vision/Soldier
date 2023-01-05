@@ -3,20 +3,25 @@ let soldier = {
     heal: 1,
     weapon: {
         name: 'M4A1 carbine',
-        bullets: 25
+        bullets: 1
     },
-    supplies: 3,
+    supplies: 1,
 
     fire() {
+        if (this.weapon.bullets > 0) {
+        this.weapon.bullets--;
+        console.log('Бах-Бах!');};
+
         if (this.weapon.bullets == 0) {
             console.log('Обойма пуста. Перезарядитесь.');
-            return;
         }
-        this.weapon.bullets--;
-        console.log('Бах-Бах!');
     },
 
     reload() {
+        if (this.supplies <= 0) {
+            console.log("Не осталось припасов.")
+            return;
+        }
         this.weapon.bullets = 30;
         this.supplies--;
         console.log("Перезарядка...");
@@ -30,5 +35,7 @@ let soldier = {
     },
 
 };
+soldier.fire()
+console.log(soldier);
 
 
